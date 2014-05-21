@@ -1,0 +1,60 @@
+An Exploration of Severe Weather Events: NOAA Data, 1950 - 2011
+===============================================================
+
+## Synopsis
+
+summary analysis / results; no more than 10 sentences
+
+## Data Processing
+
+Before processing and analysis, we must first obtain the data:
+
+```{r, results='hide'}
+## set WD on local machine to the location of this Rmd file; setup data dir
+setwd("C:/Users/570815/Dropbox/Coursera/R Working Directory/RepData_PeerAssessment2")
+zipURL <- "https://d396qusza40orc.cloudfront.net/repdata%2Fdata%2FStormData.csv.bz2"
+if(!file.exists("./data")) {dir.create("./data")}
+```
+
+To download on Windows [try() wrapper is to suppress superfluous Error message
+produced when knitting]:
+
+```{r, results='hide', warning=FALSE}
+try(download.file(zipURL, destfile="./data/NOAAdata.zip"))
+dateDownloaded <- date()
+```
+
+To download on Mac:
+
+```{r, results='hide', warning=FALSE}
+download.file(zipURL, destfile="./data/AMdata.zip", method="curl")
+dateDownloaded <- date()
+```
+
+After downloading is complete, extract the NOAA files to the ./data
+directory in the working directory, and load the data into R:
+
+```{r}
+
+```
+
+The data are now loaded and can be processed.
+
+### Processing: doin' thangs
+
+stuff goes here for processing
+
+
+## Results
+
+figures can go here; must have at least 1 figure containing a plot, and no more than 3
+
+
+## Wrap-up / final notes
+
+maybe?
+
+
+
+
+
