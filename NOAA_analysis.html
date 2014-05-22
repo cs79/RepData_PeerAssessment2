@@ -187,6 +187,8 @@ hljs.initHighlightingOnLoad();
 
 <h2>Data Processing</h2>
 
+<h3>Preprocessing</h3>
+
 <p>Before processing and analysis, we must first obtain the data:</p>
 
 <pre><code class="r">## set WD on local machine to the location of this Rmd file; setup data dir
@@ -234,13 +236,86 @@ sd &lt;- read.csv(&quot;./data/NOAAdata.csv.bz2&quot;)
 
 <p>The storm data are now loaded and can be processed for analysis.</p>
 
-<h3>Processing: doin&#39; thangs</h3>
+<h3>Processing for Analysis</h3>
 
-<p>stuff goes here for processing</p>
+<p>There are two key questions we are trying to answer in our analysis:</p>
+
+<ol>
+<li><p>Across the United States, which types of events (as indicated in the EVTYPE 
+variable) are most harmful with respect to population health?</p></li>
+<li><p>Across the United States, which types of events have the greatest economic 
+consequences?</p></li>
+</ol>
+
+<p>We will begin our analysis with the first question. The variables of interest to 
+us in the dataset for looking at population health are fatalities and injuries. 
+The following code obtains the total number of injuries and fatalities by event 
+type:</p>
+
+<pre><code class="r">library(plyr)
+## may take a little bit of time to execute the ddply operation
+healthDF &lt;- ddply(sd, .(EVTYPE), summarize, injuries = sum(INJURIES, na.rm = T), 
+    fatalities = sum(FATALITIES, na.rm = T))
+</code></pre>
+
+<p>We can quickly examine some of the &ldquo;most harmful&rdquo; events as categorized by 
+causing injury and/or fatality:</p>
+
+<pre><code class="r">healthDF &lt;- as.data.frame(healthDF)
+## top 5 events causing injuries:
+topInjury &lt;- healthDF[with(healthDF, order(injuries, fatalities, decreasing = TRUE)), 
+    ]
+head(topInjury, 5)
+</code></pre>
+
+<pre><code>##             EVTYPE injuries fatalities
+## 834        TORNADO    91346       5633
+## 856      TSTM WIND     6957        504
+## 170          FLOOD     6789        470
+## 130 EXCESSIVE HEAT     6525       1903
+## 464      LIGHTNING     5230        816
+</code></pre>
+
+<pre><code class="r">## top 5 events causing fatalities:
+topFatality &lt;- healthDF[with(healthDF, order(fatalities, injuries, decreasing = TRUE)), 
+    ]
+head(topFatality, 5)
+</code></pre>
+
+<pre><code>##             EVTYPE injuries fatalities
+## 834        TORNADO    91346       5633
+## 130 EXCESSIVE HEAT     6525       1903
+## 153    FLASH FLOOD     1777        978
+## 275           HEAT     2100        937
+## 464      LIGHTNING     5230        816
+</code></pre>
+
+<p>Can create a plot of the top N things - maybe like a 2 color histogram&hellip;</p>
+
+<p>get merged list of top 20 things (arbitrary choice) &ndash; get, say, top 50 EVTYPEs for each of injuries and fatalities, merge the uniques (in order), then truncate to 20</p>
+
+<p>then get a subset of the healthDF data where EVTYPE %in% merged list</p>
+
+<p>plot the total recorded injuries and fatalities for each event type on a bar chart &ndash; need to figure out how to do a double bar chart.  i think that this would be a decent, if rough, &ldquo;analysis&rdquo; of the &ldquo;most harmful things&rdquo;</p>
+
+<p>Now we turn to the second question.</p>
+
+<p>(similar analysis but doing a subset of the data related to economic damage variables &ndash; looks like PROPDMG and CROPDMG - the niggle here is that the <col>EXP column gives you the units of the <col>, so if PROPDMG = 25 and PROPDMGEXP = K, the economic damage is $25,000)</p>
+
+<pre><code class="r"># PROBABLY WANT TO CACHE THIS CHUNK
+
+# maybe first do some looping action somehow to get combined damage $
+# figures ? econDF &lt;- a subset of sd on select variables, similar to
+# healthDF
+</code></pre>
+
+<p>once i hvae these data figured out, can do some analysis and come up with a useful sort of plot; maybe just as simple as a version of the other one OR maybe better to do a panel plot to mix things up / do a slightly different type of analysis</p>
 
 <h2>Results</h2>
 
 <p>figures can go here; must have at least 1 figure containing a plot, and no more than 3</p>
+
+<p>(maybe keep processing code up above to get healthDF / econDF datasets, then do plotting code here + written explanation of what we&#39;re looking at in the plots)</p>
 
 <h2>Wrap-up / final notes</h2>
 
