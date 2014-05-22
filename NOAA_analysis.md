@@ -98,7 +98,7 @@ healthDF <- ddply(sd, .(EVTYPE), summarize, injuries = sum(INJURIES, na.rm = T),
 
 
 We can quickly examine some of the "most harmful" events as categorized by 
-causing injury and/or fatality:
+causing injury and/or fatality, noting that a few of the top items are the same:
 
 
 ```r
@@ -135,13 +135,22 @@ head(topFatality, 5)
 ```
 
 
-Can create a plot of the top N things - maybe like a 2 color histogram...
+To get a better sense of the most harmful events to human health, we can do a 
+bit more processing of the injury and fatality data to obtain a shared set of 
+events, which we will plot in the Results section below:
 
-get merged list of top 20 things (arbitrary choice) -- get, say, top 50 EVTYPEs for each of injuries and fatalities, merge the uniques (in order), then truncate to 20
 
-then get a subset of the healthDF data where EVTYPE %in% merged list
+```r
+## obtain the top 25 most-harmful effects as indicated by injuries /
+## fatalities
+top25i <- as.character(topInjury$EVTYPE[1:25])
+top25f <- as.character(topFatality$EVTYPE[1:25])
+## take the unique values from these top lists
+topEventNames <- unique(c(top25i, top25f))
+## subset the health effects events on this set of most-harmful events
+topHealthEvents <- healthDF[healthDF$EVTYPE %in% as.factor(topEventNames), ]
+```
 
-plot the total recorded injuries and fatalities for each event type on a bar chart -- need to figure out how to do a double bar chart.  i think that this would be a decent, if rough, "analysis" of the "most harmful things"
 
 Now we turn to the second question.
 
@@ -161,6 +170,42 @@ once i hvae these data figured out, can do some analysis and come up with a usef
 
 
 ## Results
+
+### Health-affecting Events
+
+Based on the analysis of health effects caused by weather events in the prior section, 
+we can construct the following plot of the weather events that are most harmful to human 
+health, to give a clearer sense of which events we might want to focus our efforts on 
+in terms of emergency preparation. Note that the y-axis on this graph is plotted on a 
+logarithmic scale, as Tornado injuries were significantly greater in magnitude than all 
+other event injuries.
+
+
+```r
+library(reshape2)
+library(ggplot2)
+moltenHealth <- melt(topHealthEvents, id.vars = ("EVTYPE"))
+ggplot(moltenHealth, aes(x = EVTYPE, y = value)) + geom_bar(aes(fill = variable), 
+    position = "dodge") + scale_y_log10() + theme(axis.text.x = element_text(size = 10, 
+    angle = 90, hjust = 1, vjust = 0.25)) + labs(title = "Top Health-affecting Weather Events", 
+    x = "Event Type", y = "Log number of injuries and fatalities") + scale_fill_discrete(name = "Health Effect")
+```
+
+![plot of chunk unnamed-chunk-10](figure/unnamed-chunk-10.png) 
+
+
+Looking at this plot, we can make a few observations. While the most harmful weather 
+events typically cause more injuries than fatalities, those related to cold and wind chill 
+actually cause more fatalities than injuries -- priority remediation activities may need 
+to be devised for these events that are generally more fatal than simply injurious. 
+
+The most harmful event types overall can also be clearly seen here -- tornadoes, heat, 
+floods, lightning, and winter storms (this lattermost likely to be associated with the 
+cold and wind chill events as well) are among the events with the greatest negative 
+impact on human health.
+
+### Economy-affecting Events
+
 
 figures can go here; must have at least 1 figure containing a plot, and no more than 3
 
