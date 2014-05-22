@@ -1,11 +1,13 @@
-An Exploration of Severe Weather Events: NOAA Data, 1950 - 2011
-===============================================================
+An Exploration of Severe Weather Events: NOAA Storm Data, 1950 - 2011
+=====================================================================
 
 ## Synopsis
 
 summary analysis / results; no more than 10 sentences
 
 ## Data Processing
+
+### Preprocessing
 
 Before processing and analysis, we must first obtain the data:
 
@@ -20,30 +22,47 @@ To download on Windows [try() wrapper is to suppress superfluous Error message
 produced when knitting]:
 
 ```{r, results='hide', warning=FALSE}
-try(download.file(zipURL, destfile="./data/NOAAdata.zip"))
+try(download.file(zipURL, destfile="./data/NOAAdata.csv.bz2"))
 dateDownloaded <- date()
 ```
 
 To download on Mac:
 
 ```{r, results='hide', warning=FALSE}
-download.file(zipURL, destfile="./data/AMdata.zip", method="curl")
+download.file(zipURL, destfile="./data/NOAAdata.csv.bz2", method="curl")
 dateDownloaded <- date()
 ```
 
-After downloading is complete, extract the NOAA files to the ./data
-directory in the working directory, and load the data into R:
+After downloading is complete, we can read the data into R. Testing the connection 
+to the bz2 file, we see that the values are conveniently comma-separated:
 
 ```{r}
-
+testcon <- bzfile("./data/NOAAdata.csv.bz2")
+open(testcon)
+readLines(testcon, n=3)
+close(testcon)
 ```
 
-The data are now loaded and can be processed.
+As this is the case, we can use read.csv() to read the data into R:
 
-### Processing: doin' thangs
+```{r, cache=TRUE}
+## takes a while to read - roughly 33 million data points
+sd <- read.csv("./data/NOAAdata.csv.bz2")
+```
 
-stuff goes here for processing
+The storm data are now loaded and can be processed for analysis.
 
+### Processing for Analysis
+
+There are two key questions we are trying to answer in our analysis:
+
+1. Across the United States, which types of events (as indicated in the EVTYPE 
+variable) are most harmful with respect to population health?
+
+2. Across the United States, which types of events have the greatest economic 
+consequences?
+
+We will begin our analysis with the first question.  
 
 ## Results
 
