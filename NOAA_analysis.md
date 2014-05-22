@@ -152,17 +152,53 @@ topHealthEvents <- healthDF[healthDF$EVTYPE %in% as.factor(topEventNames), ]
 ```
 
 
-Now we turn to the second question.
+Now we turn to the second question.  The data processing here is somewhat more 
+laborious as the values for economic damage are split into numerals and units which 
+give their levels (thousands, millions, billions).
 
-(similar analysis but doing a subset of the data related to economic damage variables -- looks like PROPDMG and CROPDMG - the niggle here is that the <col>EXP column gives you the units of the <col>, so if PROPDMG = 25 and PROPDMGEXP = K, the economic damage is $25,000)
+First we need to obtain the subset of relevant storm data containing information on 
+events, property and crop damage amounts, and the "units" of those amounts:
 
 
 ```r
-# PROBABLY WANT TO CACHE THIS CHUNK
+## subset the storm data set to the economic damage variables of interest
+subSD <- sd[, c("EVTYPE", "PROPDMG", "PROPDMGEXP", "CROPDMG", "CROPDMGEXP")]
+## define the valid tags that allow us to determine the damage values
+validTags <- c("b", "B", "k", "K", "m", "M")
+## subset further only on entries where a valid unit tag is present in the
+## data
+subSD <- subSD[as.character(subSD$PROPDMGEXP) %in% validTags & as.character(subSD$CROPDMGEXP) %in% 
+    validTags, ]
+```
 
-# maybe first do some looping action somehow to get combined damage $
-# figures ? econDF <- a subset of sd on select variables, similar to
-# healthDF
+
+Having obtained the subset, we now address the issue of combining the units with their 
+respective values.  First, we re-level the units for property and crop damage values:
+
+
+```r
+## re-level the property damage tags
+levels(subSD$PROPDMGEXP)[levels(subSD$PROPDMGEXP) == "B"] <- "1000000000"
+levels(subSD$PROPDMGEXP)[levels(subSD$PROPDMGEXP) == "M"] <- "1000000"
+levels(subSD$PROPDMGEXP)[levels(subSD$PROPDMGEXP) == "m"] <- "1000000"
+levels(subSD$PROPDMGEXP)[levels(subSD$PROPDMGEXP) == "K"] <- "1000"
+## re-level the crop damage tags
+levels(subSD$CROPDMGEXP)[levels(subSD$CROPDMGEXP) == "B"] <- "1000000000"
+levels(subSD$CROPDMGEXP)[levels(subSD$CROPDMGEXP) == "M"] <- "1000000"
+levels(subSD$CROPDMGEXP)[levels(subSD$CROPDMGEXP) == "m"] <- "1000000"
+levels(subSD$CROPDMGEXP)[levels(subSD$CROPDMGEXP) == "K"] <- "1000"
+levels(subSD$CROPDMGEXP)[levels(subSD$CROPDMGEXP) == "k"] <- "1000"
+```
+
+
+Next, we combine the units and values via simple multiplication:
+
+
+```r
+subSD$property.dmg <- with(subSD, PROPDMG * as.numeric(as.character(PROPDMGEXP)))
+subSD$crop.dmg <- with(subSD, CROPDMG * as.numeric(as.character(CROPDMGEXP)))
+
+# econDF <- a subset of sd on select variables, similar to healthDF
 ```
 
 
@@ -191,7 +227,7 @@ ggplot(moltenHealth, aes(x = EVTYPE, y = value)) + geom_bar(aes(fill = variable)
     x = "Event Type", y = "Log number of injuries and fatalities") + scale_fill_discrete(name = "Health Effect")
 ```
 
-![plot of chunk unnamed-chunk-10](figure/unnamed-chunk-10.png) 
+![plot of chunk unnamed-chunk-12](figure/unnamed-chunk-12.png) 
 
 
 Looking at this plot, we can make a few observations. While the most harmful weather 
@@ -200,9 +236,16 @@ actually cause more fatalities than injuries -- priority remediation activities 
 to be devised for these events that are generally more fatal than simply injurious. 
 
 The most harmful event types overall can also be clearly seen here -- tornadoes, heat, 
-floods, lightning, and winter storms (this lattermost likely to be associated with the 
-cold and wind chill events as well) are among the events with the greatest negative 
-impact on human health.
+floods, lightning, tropical storm winds, and winter storms (this lattermost likely to be 
+associated with the cold and wind chill events as well) are among the events with the 
+greatest negative impact on human health.
+
+This analysis is simplistic in that it does not account for potential changes in injuries 
+and fatalities by weather event type over time (due to circumstantial changes or simply 
+data collection changes), and lengthier exploration of the data could reveal a different 
+set of weather events that are most harmful to human health. This simplistic analysis 
+still gives us some order-of-magnitude feel for the harmfulness of weather events on 
+the basis of aggregate data, however.
 
 ### Economy-affecting Events
 
