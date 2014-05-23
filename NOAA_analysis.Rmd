@@ -224,6 +224,8 @@ in terms of emergency preparation. Note that the y-axis on this graph is plotted
 logarithmic scale, as Tornado injuries were significantly greater in magnitude than all 
 other event injuries.
 
+#### Figure 1: Top Shared Health Impacts by Weather Event Type
+
 ```{r, message=FALSE, fig.height=11, fig.width=11}
 library(reshape2)
 library(ggplot2)
@@ -242,6 +244,7 @@ magnitudes as well. Using the sortedHealthDT matrix that was constructed in the
 Processing section, we generate an xtable of the data, with the output of printing the 
 xtable rendered in HTML below the code:
 
+#### Table 1: Top Health Impacts by Weather Event Type
 ```{r, results='asis'}
 library(xtable)
 sortedTable <- xtable(sortedHealthDT)
@@ -268,6 +271,8 @@ parse visually in the plot; in order to do this we use a "hack" to plot zero val
 (of where there are a few for crop data in this selection), replacing the zero values 
 with one, the log base 10 of which is conveniently zero.  We construct the plot as 
 follows:
+
+#### Figure 2: Top Shared Economic Impacts by Weather Event Type
 
 ```{r, message=FALSE, fig.height=11, fig.width=11}
 library(reshape2)
@@ -307,6 +312,8 @@ also be useful to view the sorted output in tabular form to see true magnitudes.
 events for each type of economic damage, using the sortedEconDT matrix that was 
 constructed in the Processing section.  The output of printing the xtable is rendered in 
 HTML below the code:
+
+#### Table 2: Top Economic Impacts by Weather Event Type
 
 ```{r, results='asis'}
 library(xtable)

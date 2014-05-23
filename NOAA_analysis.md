@@ -301,6 +301,8 @@ in terms of emergency preparation. Note that the y-axis on this graph is plotted
 logarithmic scale, as Tornado injuries were significantly greater in magnitude than all 
 other event injuries.
 
+#### Figure 1: Top Shared Health Impacts by Weather Event Type
+
 
 ```r
 library(reshape2)
@@ -326,6 +328,7 @@ magnitudes as well. Using the sortedHealthDT matrix that was constructed in the
 Processing section, we generate an xtable of the data, with the output of printing the 
 xtable rendered in HTML below the code:
 
+#### Table 1: Top Health Impacts by Weather Event Type
 
 ```r
 library(xtable)
@@ -334,7 +337,7 @@ print(sortedTable, type = "html")
 ```
 
 <!-- html table generated in R 3.0.3 by xtable 1.7-3 package -->
-<!-- Thu May 22 23:44:32 2014 -->
+<!-- Fri May 23 09:14:42 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> Event Type </TH> <TH> Injuries </TH> <TH> Event Type </TH> <TH> Fatalities </TH>  </TR>
   <TR> <TD align="right"> 834 </TD> <TD> TORNADO </TD> <TD> 91346 </TD> <TD> TORNADO </TD> <TD> 5633 </TD> </TR>
@@ -386,6 +389,8 @@ parse visually in the plot; in order to do this we use a "hack" to plot zero val
 with one, the log base 10 of which is conveniently zero.  We construct the plot as 
 follows:
 
+#### Figure 2: Top Shared Economic Impacts by Weather Event Type
+
 
 ```r
 library(reshape2)
@@ -432,6 +437,8 @@ events for each type of economic damage, using the sortedEconDT matrix that was
 constructed in the Processing section.  The output of printing the xtable is rendered in 
 HTML below the code:
 
+#### Table 2: Top Economic Impacts by Weather Event Type
+
 
 ```r
 library(xtable)
@@ -440,7 +447,7 @@ print(sortedTable2, type = "html")
 ```
 
 <!-- html table generated in R 3.0.3 by xtable 1.7-3 package -->
-<!-- Thu May 22 23:44:33 2014 -->
+<!-- Fri May 23 09:14:43 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> Event Type </TH> <TH> Property Damage (dollars) </TH> <TH> Event Type </TH> <TH> Crop Damage (dollars) </TH>  </TR>
   <TR> <TD align="right"> 23 </TD> <TD> FLOOD </TD> <TD> 1.328e+11 </TD> <TD> FLOOD </TD> <TD> 5.171e+09 </TD> </TR>
