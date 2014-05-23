@@ -55,28 +55,9 @@ dateDownloaded <- date()
 ```
 
 
-After downloading is complete, we can read the data into R. Testing the connection 
-to the bz2 file, we see that the values are conveniently comma-separated:
-
-
-```r
-testcon <- bzfile("./data/NOAAdata.csv.bz2")
-open(testcon)
-readLines(testcon, n = 3)
-```
-
-```
-## [1] "\"STATE__\",\"BGN_DATE\",\"BGN_TIME\",\"TIME_ZONE\",\"COUNTY\",\"COUNTYNAME\",\"STATE\",\"EVTYPE\",\"BGN_RANGE\",\"BGN_AZI\",\"BGN_LOCATI\",\"END_DATE\",\"END_TIME\",\"COUNTY_END\",\"COUNTYENDN\",\"END_RANGE\",\"END_AZI\",\"END_LOCATI\",\"LENGTH\",\"WIDTH\",\"F\",\"MAG\",\"FATALITIES\",\"INJURIES\",\"PROPDMG\",\"PROPDMGEXP\",\"CROPDMG\",\"CROPDMGEXP\",\"WFO\",\"STATEOFFIC\",\"ZONENAMES\",\"LATITUDE\",\"LONGITUDE\",\"LATITUDE_E\",\"LONGITUDE_\",\"REMARKS\",\"REFNUM\""
-## [2] "1.00,4/18/1950 0:00:00,\"0130\",\"CST\",97.00,\"MOBILE\",\"AL\",\"TORNADO\",0.00,,,,,0.00,,0.00,,,14.00,100.00,\"3\",0.00,0.00,15.00,25.00,\"K\",0.00,,,,,3040.00,8812.00,3051.00,8806.00,,1.00"                                                                                                                                                                                                                                                                                       
-## [3] "1.00,4/18/1950 0:00:00,\"0145\",\"CST\",3.00,\"BALDWIN\",\"AL\",\"TORNADO\",0.00,,,,,0.00,,0.00,,,2.00,150.00,\"2\",0.00,0.00,0.00,2.50,\"K\",0.00,,,,,3042.00,8755.00,0.00,0.00,,2.00"
-```
-
-```r
-close(testcon)
-```
-
-
-As this is the case, we can use read.csv() to read the data into R:
+After downloading is complete, we can read the data into R. The values are 
+conveniently comma-separated in the file, so we can use read.csv() to read the 
+data:
 
 
 ```r
@@ -178,6 +159,7 @@ fcols <- healthDF[healthDF$EVTYPE %in% top25f, c(1, 3)]
 icolsSorted <- icols[with(icols, order(injuries, decreasing = T)), ]
 fcolsSorted <- fcols[with(fcols, order(fatalities, decreasing = T)), ]
 sortedHealthDT <- cbind(as.matrix(icolsSorted), as.matrix(fcolsSorted))
+colnames(sortedHealthDT) <- c("Event Type", "Injuries", "Event Type", "Fatalities")
 ```
 
 
@@ -300,6 +282,8 @@ ccols <- econDF[econDF$EVTYPE %in% top25c, c(1, 3)]
 pcolsSorted <- pcols[with(pcols, order(property.damage, decreasing = T)), ]
 ccolsSorted <- ccols[with(ccols, order(crop.damage, decreasing = T)), ]
 sortedEconDT <- cbind(as.matrix(pcolsSorted), as.matrix(ccolsSorted))
+colnames(sortedEconDT) <- c("Event Type", "Property Damage (dollars)", "Event Type", 
+    "Crop Damage (dollars)")
 ```
 
 
@@ -328,7 +312,7 @@ ggplot(moltenHealth, aes(x = EVTYPE, y = value)) + geom_bar(aes(fill = variable)
     x = "Event Type", y = "Log number of injuries and fatalities") + scale_fill_discrete(name = "Health Effect")
 ```
 
-![plot of chunk unnamed-chunk-16](figure/unnamed-chunk-16.png) 
+![plot of chunk unnamed-chunk-15](figure/unnamed-chunk-15.png) 
 
 
 Looking at this plot, we can make a few observations. While the most harmful weather 
@@ -351,9 +335,9 @@ print(sortedTable, type = "html")
 
 
 <!-- html table generated in R 3.0.3 by xtable 1.7-3 package -->
-<!-- Thu May 22 22:49:02 2014 -->
+<!-- Thu May 22 23:25:42 2014 -->
 <TABLE border=1>
-<TR> <TH>  </TH> <TH> EVTYPE </TH> <TH> injuries </TH> <TH> EVTYPE </TH> <TH> fatalities </TH>  </TR>
+<TR> <TH>  </TH> <TH> Event Type </TH> <TH> Injuries </TH> <TH> Event Type </TH> <TH> Fatalities </TH>  </TR>
   <TR> <TD align="right"> 834 </TD> <TD> TORNADO </TD> <TD> 91346 </TD> <TD> TORNADO </TD> <TD> 5633 </TD> </TR>
   <TR> <TD align="right"> 856 </TD> <TD> TSTM WIND </TD> <TD>  6957 </TD> <TD> EXCESSIVE HEAT </TD> <TD> 1903 </TD> </TR>
   <TR> <TD align="right"> 170 </TD> <TD> FLOOD </TD> <TD>  6789 </TD> <TD> FLASH FLOOD </TD> <TD>  978 </TD> </TR>
@@ -421,7 +405,7 @@ ggplot(meLog, aes(x = EVTYPE, y = value)) + geom_bar(aes(fill = variable), posit
     x = "Event Type", y = "Log dollars of damage") + scale_fill_discrete(name = "Damage Type")
 ```
 
-![plot of chunk unnamed-chunk-18](figure/unnamed-chunk-18.png) 
+![plot of chunk unnamed-chunk-17](figure/unnamed-chunk-17.png) 
 
 
 We can see a few interesting things here. While for health effects, common events 
@@ -457,9 +441,9 @@ print(sortedTable2, type = "html")
 
 
 <!-- html table generated in R 3.0.3 by xtable 1.7-3 package -->
-<!-- Thu May 22 22:48:38 2014 -->
+<!-- Thu May 22 23:26:14 2014 -->
 <TABLE border=1>
-<TR> <TH>  </TH> <TH> EVTYPE </TH> <TH> property.damage </TH> <TH> EVTYPE </TH> <TH> crop.damage </TH>  </TR>
+<TR> <TH>  </TH> <TH> Event Type </TH> <TH> Property Damage (dollars) </TH> <TH> Event Type </TH> <TH> Crop Damage (dollars) </TH>  </TR>
   <TR> <TD align="right"> 23 </TD> <TD> FLOOD </TD> <TD> 132836489050 </TD> <TD> FLOOD </TD> <TD> 5170955450 </TD> </TR>
   <TR> <TD align="right"> 61 </TD> <TD> HURRICANE/TYPHOON </TD> <TD>  26740295000 </TD> <TD> RIVER FLOOD </TD> <TD> 5028734000 </TD> </TR>
   <TR> <TD align="right"> 98 </TD> <TD> TORNADO </TD> <TD>  16166771690 </TD> <TD> ICE STORM </TD> <TD> 5022110000 </TD> </TR>
