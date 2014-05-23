@@ -333,9 +333,8 @@ sortedTable <- xtable(sortedHealthDT)
 print(sortedTable, type = "html")
 ```
 
-
 <!-- html table generated in R 3.0.3 by xtable 1.7-3 package -->
-<!-- Thu May 22 23:25:42 2014 -->
+<!-- Thu May 22 23:44:32 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> Event Type </TH> <TH> Injuries </TH> <TH> Event Type </TH> <TH> Fatalities </TH>  </TR>
   <TR> <TD align="right"> 834 </TD> <TD> TORNADO </TD> <TD> 91346 </TD> <TD> TORNADO </TD> <TD> 5633 </TD> </TR>
@@ -364,6 +363,7 @@ print(sortedTable, type = "html")
   <TR> <TD align="right"> 278 </TD> <TD> HEAT WAVE </TD> <TD>   309 </TD> <TD> ICE STORM </TD> <TD>   89 </TD> </TR>
   <TR> <TD align="right"> 376 </TD> <TD> HIGH WINDS </TD> <TD>   302 </TD> <TD> WILDFIRE </TD> <TD>   75 </TD> </TR>
    </TABLE>
+
 
 The most harmful weather event types can be clearly seen here -- tornadoes, heat, 
 floods, lightning, thunderstorm winds, and winter storms (this lattermost likely to be 
@@ -439,37 +439,37 @@ sortedTable2 <- xtable(sortedEconDT)
 print(sortedTable2, type = "html")
 ```
 
-
 <!-- html table generated in R 3.0.3 by xtable 1.7-3 package -->
-<!-- Thu May 22 23:26:14 2014 -->
+<!-- Thu May 22 23:44:33 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> Event Type </TH> <TH> Property Damage (dollars) </TH> <TH> Event Type </TH> <TH> Crop Damage (dollars) </TH>  </TR>
-  <TR> <TD align="right"> 23 </TD> <TD> FLOOD </TD> <TD> 132836489050 </TD> <TD> FLOOD </TD> <TD> 5170955450 </TD> </TR>
-  <TR> <TD align="right"> 61 </TD> <TD> HURRICANE/TYPHOON </TD> <TD>  26740295000 </TD> <TD> RIVER FLOOD </TD> <TD> 5028734000 </TD> </TR>
-  <TR> <TD align="right"> 98 </TD> <TD> TORNADO </TD> <TD>  16166771690 </TD> <TD> ICE STORM </TD> <TD> 5022110000 </TD> </TR>
-  <TR> <TD align="right"> 56 </TD> <TD> HURRICANE </TD> <TD>   9716358000 </TD> <TD> HURRICANE </TD> <TD> 2688910000 </TD> </TR>
-  <TR> <TD align="right"> 37 </TD> <TD> HAIL </TD> <TD>   7991783690 </TD> <TD> HURRICANE/TYPHOON </TD> <TD> 2607872800 </TD> </TR>
-  <TR> <TD align="right"> 19 </TD> <TD> FLASH FLOOD </TD> <TD>   7327856080 </TD> <TD> HAIL </TD> <TD> 2028807900 </TD> </TR>
-  <TR> <TD align="right"> 74 </TD> <TD> RIVER FLOOD </TD> <TD>   5079635000 </TD> <TD> DROUGHT </TD> <TD> 1652696000 </TD> </TR>
-  <TR> <TD align="right"> 84 </TD> <TD> STORM SURGE/TIDE </TD> <TD>   4640643000 </TD> <TD> FLASH FLOOD </TD> <TD> 1387439050 </TD> </TR>
-  <TR> <TD align="right"> 117 </TD> <TD> WILDFIRE </TD> <TD>   3498365470 </TD> <TD> FROST/FREEZE </TD> <TD>  931801000 </TD> </TR>
-  <TR> <TD align="right"> 88 </TD> <TD> THUNDERSTORM WIND </TD> <TD>   3398942440 </TD> <TD> HIGH WIND </TD> <TD>  631924300 </TD> </TR>
-  <TR> <TD align="right"> 52 </TD> <TD> HIGH WIND </TD> <TD>   2425742340 </TD> <TD> TSTM WIND </TD> <TD>  497284450 </TD> </TR>
-  <TR> <TD align="right"> 59 </TD> <TD> HURRICANE OPAL </TD> <TD>   2168000000 </TD> <TD> EXCESSIVE HEAT </TD> <TD>  492400000 </TD> </TR>
-  <TR> <TD align="right"> 100 </TD> <TD> TORNADOES, TSTM WIND, HAIL </TD> <TD>   1600000000 </TD> <TD> TROPICAL STORM </TD> <TD>  451711000 </TD> </TR>
-  <TR> <TD align="right"> 102 </TD> <TD> TROPICAL STORM </TD> <TD>   1056591350 </TD> <TD> THUNDERSTORM WIND </TD> <TD>  414705550 </TD> </TR>
-  <TR> <TD align="right"> 121 </TD> <TD> WINTER STORM </TD> <TD>   1017844200 </TD> <TD> TORNADO </TD> <TD>  353376460 </TD> </TR>
-  <TR> <TD align="right"> 63 </TD> <TD> ICE STORM </TD> <TD>    903037300 </TD> <TD> THUNDERSTORM WINDS </TD> <TD>  186110700 </TD> </TR>
-  <TR> <TD align="right"> 106 </TD> <TD> TSTM WIND </TD> <TD>    658305660 </TD> <TD> WILDFIRE </TD> <TD>  186102900 </TD> </TR>
-  <TR> <TD align="right"> 68 </TD> <TD> LIGHTNING </TD> <TD>    315273980 </TD> <TD> HEAVY SNOW </TD> <TD>  131643100 </TD> </TR>
-  <TR> <TD align="right"> 44 </TD> <TD> HEAVY RAIN </TD> <TD>    310701930 </TD> <TD> BLIZZARD </TD> <TD>  112060000 </TD> </TR>
-  <TR> <TD align="right"> 89 </TD> <TD> THUNDERSTORM WINDS </TD> <TD>    280117500 </TD> <TD> WILD/FOREST FIRE </TD> <TD>   98707200 </TD> </TR>
-  <TR> <TD align="right"> 20 </TD> <TD> FLASH FLOOD/FLOOD </TD> <TD>    271000000 </TD> <TD> FLOOD/FLASH FLOOD </TD> <TD>   95034000 </TD> </TR>
-  <TR> <TD align="right"> 57 </TD> <TD> HURRICANE ERIN </TD> <TD>    256000000 </TD> <TD> STRONG WIND </TD> <TD>   64948500 </TD> </TR>
-  <TR> <TD align="right"> 11 </TD> <TD> DROUGHT </TD> <TD>    233721000 </TD> <TD> HEAVY RAIN </TD> <TD>   64585800 </TD> </TR>
-  <TR> <TD align="right"> 48 </TD> <TD> HEAVY SNOW </TD> <TD>    178292000 </TD> <TD> HEAVY RAINS </TD> <TD>   60500000 </TD> </TR>
-  <TR> <TD align="right"> 5 </TD> <TD> COASTAL FLOOD </TD> <TD>    167580560 </TD> <TD> SEVERE THUNDERSTORM WINDS </TD> <TD>   29000000 </TD> </TR>
+  <TR> <TD align="right"> 23 </TD> <TD> FLOOD </TD> <TD> 1.328e+11 </TD> <TD> FLOOD </TD> <TD> 5.171e+09 </TD> </TR>
+  <TR> <TD align="right"> 61 </TD> <TD> HURRICANE/TYPHOON </TD> <TD> 2.674e+10 </TD> <TD> RIVER FLOOD </TD> <TD> 5.029e+09 </TD> </TR>
+  <TR> <TD align="right"> 98 </TD> <TD> TORNADO </TD> <TD> 1.617e+10 </TD> <TD> ICE STORM </TD> <TD> 5.022e+09 </TD> </TR>
+  <TR> <TD align="right"> 56 </TD> <TD> HURRICANE </TD> <TD> 9.716e+09 </TD> <TD> HURRICANE </TD> <TD> 2.689e+09 </TD> </TR>
+  <TR> <TD align="right"> 37 </TD> <TD> HAIL </TD> <TD> 7.992e+09 </TD> <TD> HURRICANE/TYPHOON </TD> <TD> 2.608e+09 </TD> </TR>
+  <TR> <TD align="right"> 19 </TD> <TD> FLASH FLOOD </TD> <TD> 7.328e+09 </TD> <TD> HAIL </TD> <TD> 2.029e+09 </TD> </TR>
+  <TR> <TD align="right"> 74 </TD> <TD> RIVER FLOOD </TD> <TD> 5.080e+09 </TD> <TD> DROUGHT </TD> <TD> 1.653e+09 </TD> </TR>
+  <TR> <TD align="right"> 84 </TD> <TD> STORM SURGE/TIDE </TD> <TD> 4.641e+09 </TD> <TD> FLASH FLOOD </TD> <TD> 1.387e+09 </TD> </TR>
+  <TR> <TD align="right"> 117 </TD> <TD> WILDFIRE </TD> <TD> 3.498e+09 </TD> <TD> FROST/FREEZE </TD> <TD> 9.318e+08 </TD> </TR>
+  <TR> <TD align="right"> 88 </TD> <TD> THUNDERSTORM WIND </TD> <TD> 3.399e+09 </TD> <TD> HIGH WIND </TD> <TD> 6.319e+08 </TD> </TR>
+  <TR> <TD align="right"> 52 </TD> <TD> HIGH WIND </TD> <TD> 2.426e+09 </TD> <TD> TSTM WIND </TD> <TD> 4.973e+08 </TD> </TR>
+  <TR> <TD align="right"> 59 </TD> <TD> HURRICANE OPAL </TD> <TD> 2.168e+09 </TD> <TD> EXCESSIVE HEAT </TD> <TD> 4.924e+08 </TD> </TR>
+  <TR> <TD align="right"> 100 </TD> <TD> TORNADOES, TSTM WIND, HAIL </TD> <TD> 1.600e+09 </TD> <TD> TROPICAL STORM </TD> <TD> 4.517e+08 </TD> </TR>
+  <TR> <TD align="right"> 102 </TD> <TD> TROPICAL STORM </TD> <TD> 1.057e+09 </TD> <TD> THUNDERSTORM WIND </TD> <TD> 4.147e+08 </TD> </TR>
+  <TR> <TD align="right"> 121 </TD> <TD> WINTER STORM </TD> <TD> 1.018e+09 </TD> <TD> TORNADO </TD> <TD> 3.534e+08 </TD> </TR>
+  <TR> <TD align="right"> 63 </TD> <TD> ICE STORM </TD> <TD> 9.030e+08 </TD> <TD> THUNDERSTORM WINDS </TD> <TD> 1.861e+08 </TD> </TR>
+  <TR> <TD align="right"> 106 </TD> <TD> TSTM WIND </TD> <TD> 6.583e+08 </TD> <TD> WILDFIRE </TD> <TD> 1.861e+08 </TD> </TR>
+  <TR> <TD align="right"> 68 </TD> <TD> LIGHTNING </TD> <TD> 3.153e+08 </TD> <TD> HEAVY SNOW </TD> <TD> 1.316e+08 </TD> </TR>
+  <TR> <TD align="right"> 44 </TD> <TD> HEAVY RAIN </TD> <TD> 3.107e+08 </TD> <TD> BLIZZARD </TD> <TD> 1.121e+08 </TD> </TR>
+  <TR> <TD align="right"> 89 </TD> <TD> THUNDERSTORM WINDS </TD> <TD> 2.801e+08 </TD> <TD> WILD/FOREST FIRE </TD> <TD> 9.871e+07 </TD> </TR>
+  <TR> <TD align="right"> 20 </TD> <TD> FLASH FLOOD/FLOOD </TD> <TD> 2.710e+08 </TD> <TD> FLOOD/FLASH FLOOD </TD> <TD> 9.503e+07 </TD> </TR>
+  <TR> <TD align="right"> 57 </TD> <TD> HURRICANE ERIN </TD> <TD> 2.560e+08 </TD> <TD> STRONG WIND </TD> <TD> 6.495e+07 </TD> </TR>
+  <TR> <TD align="right"> 11 </TD> <TD> DROUGHT </TD> <TD> 2.337e+08 </TD> <TD> HEAVY RAIN </TD> <TD> 6.459e+07 </TD> </TR>
+  <TR> <TD align="right"> 48 </TD> <TD> HEAVY SNOW </TD> <TD> 1.783e+08 </TD> <TD> HEAVY RAINS </TD> <TD> 6.050e+07 </TD> </TR>
+  <TR> <TD align="right"> 5 </TD> <TD> COASTAL FLOOD </TD> <TD> 1.676e+08 </TD> <TD> SEVERE THUNDERSTORM WINDS </TD> <TD> 2.900e+07 </TD> </TR>
    </TABLE>
+
 
 This table view clarifies the orders of magnitude of various types of economic damage, 
 particularly highlighting the huge cost of flood damage. While it is likely to be 

@@ -242,42 +242,11 @@ magnitudes as well. Using the sortedHealthDT matrix that was constructed in the
 Processing section, we generate an xtable of the data, with the output of printing the 
 xtable rendered in HTML below the code:
 
-```{r, results='hide'}
+```{r, results='asis'}
 library(xtable)
 sortedTable <- xtable(sortedHealthDT)
 print(sortedTable, type="html")
 ```
-
-<!-- html table generated in R 3.0.3 by xtable 1.7-3 package -->
-<!-- Thu May 22 23:25:42 2014 -->
-<TABLE border=1>
-<TR> <TH>  </TH> <TH> Event Type </TH> <TH> Injuries </TH> <TH> Event Type </TH> <TH> Fatalities </TH>  </TR>
-  <TR> <TD align="right"> 834 </TD> <TD> TORNADO </TD> <TD> 91346 </TD> <TD> TORNADO </TD> <TD> 5633 </TD> </TR>
-  <TR> <TD align="right"> 856 </TD> <TD> TSTM WIND </TD> <TD>  6957 </TD> <TD> EXCESSIVE HEAT </TD> <TD> 1903 </TD> </TR>
-  <TR> <TD align="right"> 170 </TD> <TD> FLOOD </TD> <TD>  6789 </TD> <TD> FLASH FLOOD </TD> <TD>  978 </TD> </TR>
-  <TR> <TD align="right"> 130 </TD> <TD> EXCESSIVE HEAT </TD> <TD>  6525 </TD> <TD> HEAT </TD> <TD>  937 </TD> </TR>
-  <TR> <TD align="right"> 464 </TD> <TD> LIGHTNING </TD> <TD>  5230 </TD> <TD> LIGHTNING </TD> <TD>  816 </TD> </TR>
-  <TR> <TD align="right"> 275 </TD> <TD> HEAT </TD> <TD>  2100 </TD> <TD> TSTM WIND </TD> <TD>  504 </TD> </TR>
-  <TR> <TD align="right"> 427 </TD> <TD> ICE STORM </TD> <TD>  1975 </TD> <TD> FLOOD </TD> <TD>  470 </TD> </TR>
-  <TR> <TD align="right"> 153 </TD> <TD> FLASH FLOOD </TD> <TD>  1777 </TD> <TD> RIP CURRENT </TD> <TD>  368 </TD> </TR>
-  <TR> <TD align="right"> 760 </TD> <TD> THUNDERSTORM WIND </TD> <TD>  1488 </TD> <TD> HIGH WIND </TD> <TD>  248 </TD> </TR>
-  <TR> <TD align="right"> 244 </TD> <TD> HAIL </TD> <TD>  1361 </TD> <TD> AVALANCHE </TD> <TD>  224 </TD> </TR>
-  <TR> <TD align="right"> 972 </TD> <TD> WINTER STORM </TD> <TD>  1321 </TD> <TD> WINTER STORM </TD> <TD>  206 </TD> </TR>
-  <TR> <TD align="right"> 411 </TD> <TD> HURRICANE/TYPHOON </TD> <TD>  1275 </TD> <TD> RIP CURRENTS </TD> <TD>  204 </TD> </TR>
-  <TR> <TD align="right"> 359 </TD> <TD> HIGH WIND </TD> <TD>  1137 </TD> <TD> HEAT WAVE </TD> <TD>  172 </TD> </TR>
-  <TR> <TD align="right"> 310 </TD> <TD> HEAVY SNOW </TD> <TD>  1021 </TD> <TD> EXTREME COLD </TD> <TD>  160 </TD> </TR>
-  <TR> <TD align="right"> 957 </TD> <TD> WILDFIRE </TD> <TD>   911 </TD> <TD> THUNDERSTORM WIND </TD> <TD>  133 </TD> </TR>
-  <TR> <TD align="right"> 786 </TD> <TD> THUNDERSTORM WINDS </TD> <TD>   908 </TD> <TD> HEAVY SNOW </TD> <TD>  127 </TD> </TR>
-  <TR> <TD align="right"> 30 </TD> <TD> BLIZZARD </TD> <TD>   805 </TD> <TD> EXTREME COLD/WIND CHILL </TD> <TD>  125 </TD> </TR>
-  <TR> <TD align="right"> 188 </TD> <TD> FOG </TD> <TD>   734 </TD> <TD> STRONG WIND </TD> <TD>  103 </TD> </TR>
-  <TR> <TD align="right"> 955 </TD> <TD> WILD/FOREST FIRE </TD> <TD>   545 </TD> <TD> BLIZZARD </TD> <TD>  101 </TD> </TR>
-  <TR> <TD align="right"> 117 </TD> <TD> DUST STORM </TD> <TD>   440 </TD> <TD> HIGH SURF </TD> <TD>  101 </TD> </TR>
-  <TR> <TD align="right"> 978 </TD> <TD> WINTER WEATHER </TD> <TD>   398 </TD> <TD> HEAVY RAIN </TD> <TD>   98 </TD> </TR>
-  <TR> <TD align="right"> 89 </TD> <TD> DENSE FOG </TD> <TD>   342 </TD> <TD> EXTREME HEAT </TD> <TD>   96 </TD> </TR>
-  <TR> <TD align="right"> 848 </TD> <TD> TROPICAL STORM </TD> <TD>   340 </TD> <TD> COLD/WIND CHILL </TD> <TD>   95 </TD> </TR>
-  <TR> <TD align="right"> 278 </TD> <TD> HEAT WAVE </TD> <TD>   309 </TD> <TD> ICE STORM </TD> <TD>   89 </TD> </TR>
-  <TR> <TD align="right"> 376 </TD> <TD> HIGH WINDS </TD> <TD>   302 </TD> <TD> WILDFIRE </TD> <TD>   75 </TD> </TR>
-   </TABLE>
 
 The most harmful weather event types can be clearly seen here -- tornadoes, heat, 
 floods, lightning, thunderstorm winds, and winter storms (this lattermost likely to be 
@@ -339,42 +308,11 @@ events for each type of economic damage, using the sortedEconDT matrix that was
 constructed in the Processing section.  The output of printing the xtable is rendered in 
 HTML below the code:
 
-```{r, results='hide'}
+```{r, results='asis'}
 library(xtable)
 sortedTable2 <- xtable(sortedEconDT)
 print(sortedTable2, type="html")
 ```
-
-<!-- html table generated in R 3.0.3 by xtable 1.7-3 package -->
-<!-- Thu May 22 23:26:14 2014 -->
-<TABLE border=1>
-<TR> <TH>  </TH> <TH> Event Type </TH> <TH> Property Damage (dollars) </TH> <TH> Event Type </TH> <TH> Crop Damage (dollars) </TH>  </TR>
-  <TR> <TD align="right"> 23 </TD> <TD> FLOOD </TD> <TD> 132836489050 </TD> <TD> FLOOD </TD> <TD> 5170955450 </TD> </TR>
-  <TR> <TD align="right"> 61 </TD> <TD> HURRICANE/TYPHOON </TD> <TD>  26740295000 </TD> <TD> RIVER FLOOD </TD> <TD> 5028734000 </TD> </TR>
-  <TR> <TD align="right"> 98 </TD> <TD> TORNADO </TD> <TD>  16166771690 </TD> <TD> ICE STORM </TD> <TD> 5022110000 </TD> </TR>
-  <TR> <TD align="right"> 56 </TD> <TD> HURRICANE </TD> <TD>   9716358000 </TD> <TD> HURRICANE </TD> <TD> 2688910000 </TD> </TR>
-  <TR> <TD align="right"> 37 </TD> <TD> HAIL </TD> <TD>   7991783690 </TD> <TD> HURRICANE/TYPHOON </TD> <TD> 2607872800 </TD> </TR>
-  <TR> <TD align="right"> 19 </TD> <TD> FLASH FLOOD </TD> <TD>   7327856080 </TD> <TD> HAIL </TD> <TD> 2028807900 </TD> </TR>
-  <TR> <TD align="right"> 74 </TD> <TD> RIVER FLOOD </TD> <TD>   5079635000 </TD> <TD> DROUGHT </TD> <TD> 1652696000 </TD> </TR>
-  <TR> <TD align="right"> 84 </TD> <TD> STORM SURGE/TIDE </TD> <TD>   4640643000 </TD> <TD> FLASH FLOOD </TD> <TD> 1387439050 </TD> </TR>
-  <TR> <TD align="right"> 117 </TD> <TD> WILDFIRE </TD> <TD>   3498365470 </TD> <TD> FROST/FREEZE </TD> <TD>  931801000 </TD> </TR>
-  <TR> <TD align="right"> 88 </TD> <TD> THUNDERSTORM WIND </TD> <TD>   3398942440 </TD> <TD> HIGH WIND </TD> <TD>  631924300 </TD> </TR>
-  <TR> <TD align="right"> 52 </TD> <TD> HIGH WIND </TD> <TD>   2425742340 </TD> <TD> TSTM WIND </TD> <TD>  497284450 </TD> </TR>
-  <TR> <TD align="right"> 59 </TD> <TD> HURRICANE OPAL </TD> <TD>   2168000000 </TD> <TD> EXCESSIVE HEAT </TD> <TD>  492400000 </TD> </TR>
-  <TR> <TD align="right"> 100 </TD> <TD> TORNADOES, TSTM WIND, HAIL </TD> <TD>   1600000000 </TD> <TD> TROPICAL STORM </TD> <TD>  451711000 </TD> </TR>
-  <TR> <TD align="right"> 102 </TD> <TD> TROPICAL STORM </TD> <TD>   1056591350 </TD> <TD> THUNDERSTORM WIND </TD> <TD>  414705550 </TD> </TR>
-  <TR> <TD align="right"> 121 </TD> <TD> WINTER STORM </TD> <TD>   1017844200 </TD> <TD> TORNADO </TD> <TD>  353376460 </TD> </TR>
-  <TR> <TD align="right"> 63 </TD> <TD> ICE STORM </TD> <TD>    903037300 </TD> <TD> THUNDERSTORM WINDS </TD> <TD>  186110700 </TD> </TR>
-  <TR> <TD align="right"> 106 </TD> <TD> TSTM WIND </TD> <TD>    658305660 </TD> <TD> WILDFIRE </TD> <TD>  186102900 </TD> </TR>
-  <TR> <TD align="right"> 68 </TD> <TD> LIGHTNING </TD> <TD>    315273980 </TD> <TD> HEAVY SNOW </TD> <TD>  131643100 </TD> </TR>
-  <TR> <TD align="right"> 44 </TD> <TD> HEAVY RAIN </TD> <TD>    310701930 </TD> <TD> BLIZZARD </TD> <TD>  112060000 </TD> </TR>
-  <TR> <TD align="right"> 89 </TD> <TD> THUNDERSTORM WINDS </TD> <TD>    280117500 </TD> <TD> WILD/FOREST FIRE </TD> <TD>   98707200 </TD> </TR>
-  <TR> <TD align="right"> 20 </TD> <TD> FLASH FLOOD/FLOOD </TD> <TD>    271000000 </TD> <TD> FLOOD/FLASH FLOOD </TD> <TD>   95034000 </TD> </TR>
-  <TR> <TD align="right"> 57 </TD> <TD> HURRICANE ERIN </TD> <TD>    256000000 </TD> <TD> STRONG WIND </TD> <TD>   64948500 </TD> </TR>
-  <TR> <TD align="right"> 11 </TD> <TD> DROUGHT </TD> <TD>    233721000 </TD> <TD> HEAVY RAIN </TD> <TD>   64585800 </TD> </TR>
-  <TR> <TD align="right"> 48 </TD> <TD> HEAVY SNOW </TD> <TD>    178292000 </TD> <TD> HEAVY RAINS </TD> <TD>   60500000 </TD> </TR>
-  <TR> <TD align="right"> 5 </TD> <TD> COASTAL FLOOD </TD> <TD>    167580560 </TD> <TD> SEVERE THUNDERSTORM WINDS </TD> <TD>   29000000 </TD> </TR>
-   </TABLE>
 
 This table view clarifies the orders of magnitude of various types of economic damage, 
 particularly highlighting the huge cost of flood damage. While it is likely to be 
